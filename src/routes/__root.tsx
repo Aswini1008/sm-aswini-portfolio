@@ -12,6 +12,19 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { ThemeProvider } from "../context/ThemeProvider";
+
+const themeBootstrap = `try {
+  const savedTheme = window.localStorage.getItem("aswini-portfolio-theme");
+  const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+  const theme = savedTheme === "light" || (savedTheme !== "dark" && prefersLight) ? "light" : "dark";
+  document.documentElement.classList.toggle("light", theme === "light");
+  document.documentElement.classList.toggle("dark", theme === "dark");
+  document.documentElement.style.colorScheme = theme;
+} catch (error) {
+  console.error("Could not initialize the theme preference.", error);
+  document.documentElement.classList.add("dark");
+}`;
 
 function NotFoundComponent() {
   return (
@@ -105,9 +118,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
       <body>
         {children}
@@ -122,8 +136,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
