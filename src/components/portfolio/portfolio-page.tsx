@@ -2,7 +2,6 @@ import { useEffect, useState, type FormEvent } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
-  Atom,
   BookOpenText,
   Braces,
   BriefcaseBusiness,
@@ -362,37 +361,50 @@ function SkillsSection() {
   );
 }
 
-function TrainingPreview() {
+function ChurchWebsitePreview() {
   return (
-    <div className="project-preview training-preview" role="img" aria-label="Illustrative training website preview for Nexbyta">
-      <div className="preview-browser-bar"><span className="window-dots" aria-hidden="true"><i /><i /><i /></span><span>nexbyta / learning</span><span className="preview-browser-label">TRAINING</span></div>
-      <div className="training-preview-body">
-        <div className="training-preview-copy"><span className="preview-eyebrow">LEARN BY DOING</span><strong>Build your<br />next skill.</strong><span className="preview-line" /><span className="preview-course-link">Explore courses <ArrowUpRight aria-hidden="true" /></span></div>
-        <div className="training-course-stack" aria-hidden="true">
-          <span className="course-mini-label">LEARNING PATHS</span>
-          <div className="course-mini-card"><span className="course-mini-icon"><Braces /></span><span><b>Programming</b><small>Java · Python · C</small></span><ArrowUpRight /></div>
-          <div className="course-mini-card course-mini-card-offset"><span className="course-mini-icon course-mini-icon-teal"><Atom /></span><span><b>Web development</b><small>Build, practice, repeat</small></span><ArrowUpRight /></div>
+    <div className="project-preview church-preview" role="img" aria-label="Illustrative placeholder preview for the Church Website project">
+      <div className="preview-browser-bar"><span className="window-dots" aria-hidden="true"><i /><i /><i /></span><span>parish / community</span><span className="preview-browser-label">CHURCH WEBSITE</span></div>
+      <div className="church-preview-body">
+        <div className="church-preview-copy">
+          <span className="preview-eyebrow">PARISH COMMUNITY</span>
+          <strong>Church<br />Website</strong>
+          <span className="church-preview-line" />
+          <span className="church-preview-note">Management · Gallery · Announcements</span>
+        </div>
+        <div className="church-preview-scene" aria-hidden="true">
+          <span className="church-scene-sun" />
+          <span className="church-scene-ground" />
+          <div className="church-building">
+            <span className="church-main-roof" />
+            <div className="church-tower">
+              <span className="church-tower-roof" />
+              <span className="church-cross" />
+              <span className="church-tower-window" />
+            </div>
+            <span className="church-windows"><i /><i /><i /></span>
+            <span className="church-door" />
+          </div>
         </div>
       </div>
-      <span className="preview-corner-code" aria-hidden="true">NX / 01</span>
+      <span className="preview-corner-code">ILLUSTRATIVE PREVIEW</span>
     </div>
   );
 }
 
-function SustainabilityPreview() {
+function PrPowerPreview() {
   return (
-    <div className="project-preview sustainability-preview" role="img" aria-label="Abstract AI and embedded systems sustainability project illustration">
-      <div className="sustainability-preview-head"><span className="preview-eyebrow">FINAL YEAR PROJECT</span><span className="preview-status"><span /> SYSTEM STUDY</span></div>
-      <div className="sustainability-visual" aria-hidden="true">
-        <div className="circuit-track circuit-track-one" />
-        <div className="circuit-track circuit-track-two" />
-        <div className="circuit-node circuit-node-one"><Cpu /></div>
-        <div className="circuit-node circuit-node-two"><Atom /></div>
-        <div className="circuit-core"><span>AI</span><small>+ EMBEDDED</small></div>
-        <span className="circuit-label circuit-label-one">SUSTAINABILITY</span>
-        <span className="circuit-label circuit-label-two">COST-CONSCIOUS DESIGN</span>
+    <div className="project-preview pr-power-preview" role="img" aria-label="Illustrative placeholder preview for PR Power; project details are pending">
+      <div className="preview-browser-bar"><span className="window-dots" aria-hidden="true"><i /><i /><i /></span><span>pr-power / project</span><span className="preview-browser-label">PREVIEW</span></div>
+      <div className="pr-power-preview-body">
+        <div className="pr-power-preview-panel">
+          <span className="preview-eyebrow">PROJECT PREVIEW</span>
+          <span className="pr-power-monogram" aria-hidden="true">PR</span>
+          <strong>PR Power</strong>
+          <span className="pr-power-pending">Project preview pending</span>
+        </div>
       </div>
-      <div className="sustainability-preview-foot"><span>Research · Design · Engineering</span><span aria-hidden="true">02 / 02</span></div>
+      <span className="preview-corner-code">DETAILS PENDING</span>
     </div>
   );
 }
@@ -408,23 +420,23 @@ function ProjectCard({
   title: string;
   description: string;
   technologies: string[];
-  preview: "training" | "sustainability";
+  preview: "church" | "pr-power";
 }) {
   return (
     <article className="project-card">
-      {preview === "training" ? <TrainingPreview /> : <SustainabilityPreview />}
+      {preview === "church" ? <ChurchWebsitePreview /> : <PrPowerPreview />}
       <div className="project-content">
         <div className="project-title-row"><span className="project-number">{number}</span><h3>{title}</h3></div>
         <p className="project-description">{description}</p>
         <ul className="project-tags" aria-label="Technologies">
-          {technologies.map((technology) => <li key={technology}>{technology}</li>)}
+          {technologies.length > 0 ? technologies.map((technology) => <li key={technology}>{technology}</li>) : <li>Technologies to be provided</li>}
         </ul>
         <div className="project-actions">
-          <Button type="button" size="sm" className="project-link-button" disabled title="A live project URL has not been provided yet.">
-            Live demo unavailable <ArrowUpRight aria-hidden="true" />
+          <Button type="button" size="sm" className="project-link-button" disabled aria-label="Live Demo URL not provided yet" title="A live project URL has not been provided yet.">
+            Live Demo <ArrowUpRight aria-hidden="true" />
           </Button>
-          <Button type="button" size="sm" variant="outline" className="project-github-button" disabled title="A repository URL has not been provided yet.">
-            <Github aria-hidden="true" /> Code link pending
+          <Button type="button" size="sm" variant="outline" className="project-github-button" disabled aria-label="GitHub URL not provided yet" title="A repository URL has not been provided yet.">
+            <Github aria-hidden="true" /> GitHub
           </Button>
         </div>
       </div>
@@ -438,9 +450,9 @@ function ProjectsSection() {
       <div className="portfolio-container">
         <div className="section-heading-row">
           <SectionHeading
-            eyebrow="Selected work"
+            eyebrow="Projects"
             title="My"
-            accent="projects"
+            accent="Projects"
             description="A few real-world projects I’ve built."
           />
           <span className="projects-count"><span>02</span> featured projects</span>
@@ -448,17 +460,17 @@ function ProjectsSection() {
         <div className="projects-grid">
           <ProjectCard
             number="01"
-            title="Nexbyta Training Website"
-            description="A training and ed-tech company website with a modern interface and a database-backed backend."
-            technologies={["React.js", "TypeScript", "Supabase", "Tailwind CSS"]}
-            preview="training"
+            title="Church Website"
+            description="A full-stack web application for parish management, gallery, announcements and administrative management."
+            technologies={["React.js", "Node.js", "MongoDB", "Cloudinary"]}
+            preview="church"
           />
           <ProjectCard
             number="02"
-            title="Final Year Project"
-            description="An AI and embedded systems project focused on sustainability and cost-effective design."
-            technologies={["AI/ML", "Embedded Systems"]}
-            preview="sustainability"
+            title="PR Power"
+            description="Description to be provided."
+            technologies={[]}
+            preview="pr-power"
           />
         </div>
       </div>
