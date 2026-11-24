@@ -65,9 +65,16 @@ const navigation = [
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
+  { id: "credentials", label: "Achievements" },
   { id: "contact", label: "Contact" },
 ];
 
+const githubUrl = "https://github.com/Aswini1008";
+const linkedinUrl = "https://in.linkedin.com/in/aswini-sm";
+const devUrl = "https://dev.to/aswini-sm";
+const leetcodeUrl = "https://leetcode.com/u/aswini_sm";
+const emailUrl = "mailto:smaswini006@gmail.com";
+const existingPortfolioUrl = "https://aswini-sm-portfolio.netlify.app/";
 const githubRepositoryUrl = "https://github.com/Aswini1008/sm-aswini-portfolio";
 
 const skillGroups = [
@@ -76,33 +83,52 @@ const skillGroups = [
     description: "Languages for problem solving and building software.",
     icon: Code2,
     skills: [
-      { name: "Java", icon: Coffee },
+      { name: "Java", icon: Coffee, primary: true },
       { name: "C", icon: Code2 },
       { name: "JavaScript", icon: Braces },
+      { name: "Python", icon: Terminal },
     ],
   },
   {
-    title: "Web development",
+    title: "Computer science",
+    description: "The foundations behind reliable, scalable software.",
+    icon: Braces,
+    skills: [
+      { name: "OOP", icon: Braces },
+      { name: "Data Structures & Algorithms", icon: Workflow },
+      { name: "Problem Solving", icon: Sparkles, primary: true },
+      { name: "Collections & Exception Handling", icon: Layers3 },
+      { name: "DBMS & SQL", icon: Database },
+    ],
+  },
+  {
+    title: "Frontend development",
     description: "Building responsive interfaces and modern web experiences.",
     icon: Layers3,
     skills: [
-      { name: "HTML", icon: FileCode2 },
-      { name: "CSS", icon: PanelsTopLeft },
+      { name: "HTML5", icon: FileCode2 },
+      { name: "CSS3", icon: PanelsTopLeft },
       { name: "React.js", icon: Atom },
       { name: "Tailwind CSS", icon: Wind },
       { name: "Bootstrap", icon: Grid2X2 },
     ],
   },
   {
-    title: "Backend & tools",
-    description: "Backend frameworks, design tools, source control and cloud.",
+    title: "Backend & databases",
+    description: "APIs, databases, source control and deployment platforms.",
     icon: Database,
     skills: [
       { name: "Node.js", icon: Server },
       { name: "Express.js", icon: Workflow },
+      { name: "REST APIs", icon: Grid2X2 },
+      { name: "MySQL", icon: Database },
+      { name: "MongoDB", icon: Database },
+      { name: "Git", icon: Github },
+      { name: "VS Code", icon: Terminal },
+      { name: "Postman", icon: Send },
+      { name: "Netlify", icon: Globe2 },
+      { name: "Vercel", icon: Cloud },
       { name: "GitHub", icon: Github },
-      { name: "Figma", icon: Figma },
-      { name: "AWS", icon: Cloud },
     ],
   },
 ];
@@ -111,29 +137,31 @@ const projects = [
   {
     number: "01",
     category: "Full-stack web application",
-    title: "Church Website",
+    title: "Church Management Web Application",
     description:
       "A full-stack web application for parish management, image galleries, announcements and administrative management.",
-    technologies: ["React.js", "Node.js", "MongoDB", "Cloudinary"],
+    technologies: ["React.js", "Bootstrap", "Node.js", "Express.js", "MongoDB"],
     preview: "church" as const,
+    liveUrl: "https://stjosephskamplar.org/",
   },
   {
     number: "02",
-    category: "Company portfolio & digital services",
-    title: "Nexbyta Technologies",
-    subtitle: "Company Portfolio & Digital Services Platform",
+    category: "Company website",
+    title: "PR Power Infrastructure",
+    subtitle: "Power infrastructure company website",
     description:
-      "A professional company website showcasing technology training, programming courses, web and app development services, internships and digital solutions.",
-    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+      "A responsive business website that converts company requirements into clear, professional layouts.",
+    technologies: ["React.js", "Tailwind CSS"],
     preview: "nexbyta" as const,
+    liveUrl: "https://prpowerinfra.com/",
   },
   {
     number: "03",
-    category: "AI-enhanced hardware prototype",
-    title: "AI-Enhanced Cell-Level Battery Monitoring & Early-Anomaly Detection System",
-    subtitle: "Smart EV battery monitoring prototype",
+    category: "Final-year AI & IoT project",
+    title: "VoltGuard",
+    subtitle: "AI and IoT battery pack monitoring",
     description:
-      "A smart EV battery monitoring prototype designed to monitor battery-cell parameters and identify early anomalies using AI-based detection.",
+      "A final-year project for monitoring battery health and identifying abnormal operating conditions. Implementation status is still being validated.",
     technologies: [
       "ESP32",
       "React.js",
@@ -326,26 +354,44 @@ function HeroSection() {
             Available for opportunities
           </p>
           <p className="hero-kicker">
-            <span>Software Developer</span>
+            <span>Java Developer</span>
             <i aria-hidden="true" />
-            Programming Trainer
+            Full-Stack Developer
           </p>
           <h1>
-            <span>Hi, I&apos;m</span> <span className="gradient-text">Aswini.</span>
+            <span>Hi, I&apos;m</span> <span className="gradient-text">Aswini S M.</span>
           </h1>
           <p className="hero-description">
-            I build clean, responsive web applications with React and Tailwind CSS, and I teach
-            programming to help students grow into confident developers.
+            Aspiring Software Developer with strong interests in Java, problem-solving, Data Structures
+            and Algorithms, and full-stack web development. I build practical applications and enjoy
+            turning ideas into working software.
           </p>
           <div className="hero-actions">
             <Button asChild size="lg" className="primary-action">
               <a href="#projects">
-                View my work <ArrowDownRight aria-hidden="true" />
+                View My Projects <ArrowDownRight aria-hidden="true" />
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="secondary-action">
-              <a href="#contact">Get in touch</a>
+            <Button type="button" variant="outline" size="lg" className="secondary-action" disabled title="Resume PDF has not been added yet.">
+              Download Resume
             </Button>
+            <Button asChild variant="outline" size="lg" className="secondary-action">
+              <a href="#contact">Contact Me</a>
+            </Button>
+          </div>
+          <div className="hero-social-links" aria-label="Aswini's social profiles">
+            <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="Visit Aswini's GitHub profile" title="GitHub">
+              <Github aria-hidden="true" />
+            </a>
+            <a href={linkedinUrl} target="_blank" rel="noreferrer" aria-label="Visit Aswini's LinkedIn profile" title="LinkedIn">
+              <Linkedin aria-hidden="true" />
+            </a>
+            <a href={leetcodeUrl} target="_blank" rel="noreferrer" aria-label="Visit Aswini's LeetCode profile" title="LeetCode">
+              <Code2 aria-hidden="true" />
+            </a>
+            <a href={emailUrl} aria-label="Email Aswini" title="Email">
+              <Mail aria-hidden="true" />
+            </a>
           </div>
           <div className="hero-location">
             <MapPin aria-hidden="true" />
@@ -480,13 +526,15 @@ function AboutSection() {
         <div className="about-copy">
           <SectionHeading eyebrow="01 / About me" title="A little about" accent="who I am." />
           <p className="about-paragraph">
-            I&apos;m Aswini, a final-year engineering student and self-taught frontend developer. I
-            enjoy turning ideas into polished, practical web products, and I teach Java, Python and
-            C to students.
+            I am an aspiring Software Developer with strong interests in Java programming,
+            problem-solving, Data Structures and Algorithms, and full-stack web development.
+            I have practical experience building responsive React applications and websites with
+            JavaScript, HTML, CSS, Node.js and databases.
           </p>
           <p className="about-paragraph">
-            I&apos;m currently looking for software development roles where I can keep building and
-            learning.
+            I enjoy coding challenges, hackathons, real-world projects and mentoring students.
+            My goal is to build a career in software development and contribute to impactful,
+            scalable products.
           </p>
 
           <div className="about-facts">
@@ -497,7 +545,7 @@ function AboutSection() {
               <div>
                 <span className="fact-label">Education</span>
                 <strong>B.E. Electronics &amp; Communication</strong>
-                <small>Panimalar Engineering College</small>
+                <small>Panimalar Engineering College · 2023–2027</small>
               </div>
             </article>
             <article className="about-fact">
@@ -516,8 +564,8 @@ function AboutSection() {
               </span>
               <div>
                 <span className="fact-label">Current focus</span>
-                <strong>Frontend development</strong>
-                <small>Software engineering</small>
+                <strong>Java &amp; full-stack development</strong>
+                <small>DSA and practical software</small>
               </div>
             </article>
           </div>
@@ -571,8 +619,8 @@ function SkillsSection() {
                 </div>
                 <p className="skill-card-description">{group.description}</p>
                 <ul className="skill-list">
-                  {group.skills.map(({ name, icon: SkillIcon }) => (
-                    <li key={name}>
+                  {group.skills.map(({ name, icon: SkillIcon, primary }) => (
+                    <li key={name} className={primary ? "primary-skill" : undefined}>
                       <SkillIcon aria-hidden="true" />
                       <span>{name}</span>
                     </li>
@@ -660,7 +708,7 @@ function NexbytaPreview() {
     <div
       className="project-preview nexbyta-preview"
       role="img"
-      aria-label="Illustrative website concept for Nexbyta Technologies; this is not a supplied project screenshot"
+      aria-label="Illustrative website concept for PR Power Infrastructure; this is not a supplied project screenshot"
     >
       <div className="preview-browser-bar">
         <span className="window-dots" aria-hidden="true">
@@ -832,6 +880,7 @@ function ProjectCard({
   description,
   technologies,
   preview,
+  liveUrl,
 }: {
   number: string;
   category: string;
@@ -840,6 +889,7 @@ function ProjectCard({
   description: string;
   technologies: string[];
   preview: "church" | "nexbyta" | "battery";
+  liveUrl?: string;
 }) {
   const previewComponents = {
     church: ChurchWebsitePreview,
@@ -868,16 +918,24 @@ function ProjectCard({
           ))}
         </ul>
         <div className="project-actions">
-          <Button
-            type="button"
-            size="sm"
-            className="project-link-button"
-            disabled
-            aria-label="Live Demo URL not provided yet"
-            title="A live project URL has not been provided yet."
-          >
-            Preview unavailable <ExternalLink aria-hidden="true" />
-          </Button>
+          {liveUrl ? (
+            <Button asChild size="sm" className="project-link-button">
+              <a href={liveUrl} target="_blank" rel="noreferrer" aria-label={`Open ${title} live website`}>
+                Live demo <ExternalLink aria-hidden="true" />
+              </a>
+            </Button>
+          ) : (
+            <Button
+              type="button"
+              size="sm"
+              className="project-link-button"
+              disabled
+              aria-label="Live Demo URL not provided yet"
+              title="A live project URL has not been provided yet."
+            >
+              Preview unavailable <ExternalLink aria-hidden="true" />
+            </Button>
+          )}
           <Button
             type="button"
             size="sm"
@@ -890,7 +948,9 @@ function ProjectCard({
             <Github aria-hidden="true" /> GitHub
           </Button>
         </div>
-        <p className="project-link-note">Project links haven&apos;t been provided.</p>
+        {!liveUrl ? (
+          <p className="project-link-note">Live project link pending confirmation.</p>
+        ) : null}
       </div>
     </TiltCard>
   );
@@ -967,17 +1027,24 @@ function ExperienceSection() {
             <div className="timeline-list">
               <TimelineEntry
                 icon={BookOpenText}
-                label="Teaching"
-                title="Programming Trainer"
+                label="Training & mentoring"
+                title="Technical Trainer / Programming Mentor"
                 organization="Nexbyta Technologies"
-                description="Teaching Python, Java and C to students, with a focus on fundamentals and hands-on practice."
+                description="Mentored students in Java and Python through hands-on sessions, assessments and guided problem-solving."
+              />
+              <TimelineEntry
+                icon={Braces}
+                label="February 2025 – April 2025 · Remote"
+                title="Web Development Intern"
+                organization="Test Yatra"
+                description="Built responsive components with HTML, CSS, JavaScript and React.js; integrated REST APIs and collaborated using Git and GitHub."
               />
               <TimelineEntry
                 icon={Cpu}
-                label="Internship"
-                title="AI-focused internship"
-                organization="MetaTaaraka AI Innovations · NEXORA project"
-                description="Worked on the NEXORA project during an AI-focused internship."
+                label="May 2025 – June 2025"
+                title="Telecom Intern"
+                organization="BSNL"
+                description="Gained exposure to telecommunications infrastructure, networking concepts and practical telecom operations."
               />
             </div>
           </div>
@@ -992,7 +1059,14 @@ function ExperienceSection() {
                 label="2023 – 2027 · Final year"
                 title="B.E. Electronics and Communication Engineering"
                 organization="Panimalar Engineering College"
-                description="CGPA: 8.55 / 10"
+                description="CGPA: 8.56 / 10"
+              />
+              <TimelineEntry
+                icon={GraduationCap}
+                label="Completed 2023"
+                title="Higher Secondary Education"
+                organization="Holy Infant Jesus Matriculation Higher Secondary School"
+                description="Percentage: 86.6%"
               />
               <div className="education-note">
                 <span className="education-note-icon">
@@ -1005,6 +1079,63 @@ function ExperienceSection() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CredentialsSection() {
+  return (
+    <section id="credentials" className="portfolio-section portfolio-section-alt credentials-section">
+      <div className="portfolio-container">
+        <SectionHeading
+          eyebrow="05 / Achievements & credentials"
+          title="Practice, learning"
+          accent="and recognition"
+          description="Coding milestones, certifications and profiles that support my software development journey."
+        />
+        <div className="credentials-grid">
+          <article className="credential-card">
+            <span className="fact-label">Achievements</span>
+            <h3>Problem solving &amp; recognition</h3>
+            <ul>
+              <li>Solved 200+ coding problems, primarily using Java.</li>
+              <li>Top 60 finalist in the Odoo × SNS Institutions Hackathon. Event year pending confirmation.</li>
+              <li>Participated in technical learning programs and mentoring activities.</li>
+            </ul>
+          </article>
+          <article className="credential-card">
+            <span className="fact-label">Certifications</span>
+            <h3>Technical learning</h3>
+            <ul>
+              <li>NPTEL – Programming in Java (80% in the latest resume draft).</li>
+              <li>Additional technical learning and training programs.</li>
+            </ul>
+            <p className="credential-note">Certificate images and verification links will be added when available.</p>
+          </article>
+          <article className="credential-card">
+            <span className="fact-label">Coding profiles</span>
+            <h3>Practice and problem solving</h3>
+            <p>I actively practice arrays, strings, hash maps, stacks, queues, linked lists, heaps, recursion, dynamic programming and searching algorithms.</p>
+            <div className="credential-links">
+              <Button asChild variant="outline" size="sm">
+                <a href={leetcodeUrl} target="_blank" rel="noreferrer">
+                  <Code2 aria-hidden="true" /> LeetCode
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="sm">
+                <a href={githubUrl} target="_blank" rel="noreferrer">
+                  <Github aria-hidden="true" /> GitHub
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="sm">
+                <a href={devUrl} target="_blank" rel="noreferrer">
+                  <Globe2 aria-hidden="true" /> DEV
+                </a>
+              </Button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1036,7 +1167,7 @@ function ContactSection() {
     <section id="contact" className="portfolio-section portfolio-section-alt contact-section">
       <div className="portfolio-container">
         <SectionHeading
-          eyebrow="05 / Contact"
+          eyebrow="06 / Contact"
           title="Let’s create something"
           accent="meaningful."
           description="Have a project, opportunity, or any query? Feel free to contact me."
@@ -1059,7 +1190,9 @@ function ContactSection() {
                 </span>
                 <span>
                   <small>Email</small>
-                  <strong>Email not configured yet</strong>
+                  <strong>
+                    <a href={emailUrl}>smaswini006@gmail.com</a>
+                  </strong>
                 </span>
               </div>
               <div className="contact-detail">
@@ -1088,23 +1221,54 @@ function ContactSection() {
                   asChild
                   variant="outline"
                   size="icon"
-                  aria-label="Open Aswini's GitHub repository"
+                  aria-label="Visit Aswini's GitHub profile"
                 >
-                  <a href={githubRepositoryUrl} target="_blank" rel="noreferrer">
+                  <a href={githubUrl} target="_blank" rel="noreferrer" title="GitHub">
                     <Github aria-hidden="true" />
                   </a>
                 </Button>
                 <Button
-                  type="button"
+                  asChild
                   variant="outline"
                   size="icon"
-                  disabled
-                  aria-label="LinkedIn profile link not configured"
+                  aria-label="Visit Aswini's LinkedIn profile"
                 >
-                  <Linkedin aria-hidden="true" />
+                  <a href={linkedinUrl} target="_blank" rel="noreferrer" title="LinkedIn">
+                    <Linkedin aria-hidden="true" />
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="icon"
+                  aria-label="Visit Aswini's LeetCode profile"
+                >
+                  <a href={leetcodeUrl} target="_blank" rel="noreferrer" title="LeetCode">
+                    <Code2 aria-hidden="true" />
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="icon"
+                  aria-label="Visit Aswini's DEV Community profile"
+                >
+                  <a href={devUrl} target="_blank" rel="noreferrer" title="DEV Community">
+                    <Globe2 aria-hidden="true" />
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="icon"
+                  aria-label="Email Aswini"
+                >
+                  <a href={emailUrl} title="Email">
+                    <Mail aria-hidden="true" />
+                  </a>
                 </Button>
               </div>
-              <small>GitHub repository · LinkedIn profile not linked</small>
+              <small>GitHub · LinkedIn · LeetCode · DEV · Email</small>
             </div>
           </div>
 
@@ -1202,20 +1366,41 @@ function Footer() {
         <div className="footer-right">
           <a
             className="footer-social-note footer-github-link"
-            href={githubRepositoryUrl}
+            href={githubUrl}
             target="_blank"
             rel="noreferrer"
-            aria-label="Open Aswini's GitHub repository"
+            aria-label="Visit Aswini's GitHub profile"
           >
             <Github aria-hidden="true" />
-            GitHub repository
+            GitHub
           </a>
-          <span
-            className="footer-social-note footer-linkedin-note"
-            aria-label="LinkedIn profile not linked"
+          <a
+            className="footer-social-note"
+            href={linkedinUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Visit Aswini's LinkedIn profile"
           >
             <Linkedin aria-hidden="true" />
-          </span>
+          </a>
+          <a
+            className="footer-social-note"
+            href={leetcodeUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Visit Aswini's LeetCode profile"
+          >
+            <Code2 aria-hidden="true" />
+          </a>
+          <a
+            className="footer-social-note"
+            href={existingPortfolioUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Visit Aswini's existing portfolio"
+          >
+            <Globe2 aria-hidden="true" />
+          </a>
           <span>© 2026 Aswini. All rights reserved.</span>
         </div>
       </div>
@@ -1240,6 +1425,7 @@ export function PortfolioPage() {
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
+        <CredentialsSection />
         <ContactSection />
       </main>
       <Footer />
