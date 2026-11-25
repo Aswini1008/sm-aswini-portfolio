@@ -2226,3 +2226,154 @@ html {
     flex-wrap: wrap;
   }
 }
+
+.journey-grid {
+  align-items: start;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.journey-column-experience {
+  border: 1px solid color-mix(in oklch, var(--primary) 35%, var(--border));
+  border-radius: 0.9rem;
+  background:
+    radial-gradient(ellipse at 0% 0%, color-mix(in oklch, var(--primary) 12%, transparent), transparent 58%),
+    color-mix(in oklch, var(--card) 48%, var(--background));
+  padding: clamp(1rem, 2.2vw, 1.6rem);
+  box-shadow: 0 1.25rem 3rem color-mix(in oklch, var(--primary) 8%, transparent);
+}
+
+.journey-column-experience .journey-column-heading {
+  border-color: color-mix(in oklch, var(--primary) 30%, var(--border));
+}
+
+.journey-column-experience .journey-column-heading h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.journey-count {
+  margin-left: auto;
+  border: 1px solid color-mix(in oklch, var(--primary) 36%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--primary) 10%, var(--card));
+  padding: 0.32rem 0.6rem;
+  color: var(--violet-soft);
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.journey-column-experience .timeline-list {
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-left: 1.35rem;
+}
+
+.journey-column-experience .timeline-list::before {
+  left: 0.2rem;
+  background: linear-gradient(var(--primary), color-mix(in oklch, var(--cyan-soft) 54%, transparent));
+}
+
+.journey-column-experience .timeline-entry {
+  border-color: color-mix(in oklch, var(--primary) 28%, var(--border));
+  border-left: 2px solid color-mix(in oklch, var(--primary) 72%, var(--border));
+  border-radius: 0.65rem;
+  background: color-mix(in oklch, var(--card) 88%, var(--primary) 12%);
+  padding: 1.15rem 1.2rem;
+  box-shadow: 0 0.6rem 1.5rem color-mix(in oklch, var(--background) 24%, transparent);
+}
+
+.journey-column-experience .timeline-dot {
+  left: -1.53rem;
+  width: 0.72rem;
+  border: 2px solid var(--background);
+  background: var(--primary);
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--primary) 32%, transparent);
+}
+
+.timeline-entry-featured {
+  border-color: color-mix(in oklch, var(--primary) 64%, var(--border)) !important;
+  background:
+    linear-gradient(125deg, color-mix(in oklch, var(--primary) 15%, var(--card)), var(--card) 74%) !important;
+  box-shadow: 0 0.9rem 2rem color-mix(in oklch, var(--primary) 12%, transparent) !important;
+}
+
+.timeline-featured-label {
+  display: inline-flex;
+  margin-top: 0.85rem;
+  border: 1px solid color-mix(in oklch, var(--cyan-soft) 35%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--cyan-soft) 9%, var(--card));
+  padding: 0.28rem 0.55rem;
+  color: var(--cyan-soft);
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.timeline-entry-featured h4 {
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+}
+
+.journey-column-education .timeline-list {
+  gap: 0.85rem;
+}
+
+.journey-column-education .timeline-entry {
+  border-radius: 0.65rem;
+  background: color-mix(in oklch, var(--card) 70%, transparent);
+  padding: 1.15rem;
+}
+
+.journey-column-education .timeline-entry h4 {
+  font-size: 1rem;
+}
+
+.journey-column-education .timeline-entry-top {
+  font-size: 0.6rem;
+}
+
+@media (max-width: 767px) {
+  .journey-grid {
+    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .journey-column-experience {
+    padding: 1rem;
+  }
+
+  .journey-column-experience .timeline-entry {
+    padding: 1rem;
+  }
+
+  .journey-column-education .timeline-entry {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .journey-column-experience {
+    padding: 0.8rem;
+  }
+
+  .journey-column-experience .journey-column-heading {
+    gap: 0.55rem;
+  }
+
+  .journey-count {
+    padding-inline: 0.45rem;
+    font-size: 0.54rem;
+  }
+
+  .journey-column-experience .timeline-list {
+    padding-left: 1.15rem;
+  }
+
+  .journey-column-experience .timeline-dot {
+    left: -1.34rem;
+  }
+}

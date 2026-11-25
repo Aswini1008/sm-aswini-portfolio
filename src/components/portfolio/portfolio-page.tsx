@@ -988,20 +988,23 @@ function TimelineEntry({
   title,
   organization,
   description,
+  featured = false,
 }: {
   icon: typeof BriefcaseBusiness;
   label: string;
   title: string;
   organization: string;
   description?: string;
+  featured?: boolean;
 }) {
   return (
-    <article className="timeline-entry">
+    <article className={`timeline-entry${featured ? " timeline-entry-featured" : ""}`}>
       <span className="timeline-dot" aria-hidden="true" />
       <div className="timeline-entry-top">
         <span>{label}</span>
         <Icon aria-hidden="true" />
       </div>
+      {featured ? <span className="timeline-featured-label">Featured experience</span> : null}
       <h4>{title}</h4>
       <p className="timeline-organization">{organization}</p>
       {description ? <p className="timeline-description">{description}</p> : null}
@@ -1015,15 +1018,16 @@ function ExperienceSection() {
       <div className="portfolio-container">
         <SectionHeading
           eyebrow="04 / The journey"
-          title="Experience &"
-          accent="education"
-          description="The work and learning shaping how I build."
+          title="Experience that"
+          accent="shapes my work"
+          description="Hands-on roles, real projects, and the lessons I bring to every build."
         />
         <div className="journey-grid">
-          <div className="journey-column">
+          <div className="journey-column journey-column-experience">
             <div className="journey-column-heading">
               <BriefcaseBusiness aria-hidden="true" />
               <h3>Experience</h3>
+              <span className="journey-count">03 roles</span>
             </div>
             <div className="timeline-list">
               <TimelineEntry
@@ -1032,6 +1036,7 @@ function ExperienceSection() {
                 title="Technical Trainer / Programming Mentor"
                 organization="Nexbyta Technologies"
                 description="Mentored students in Java and Python through hands-on sessions, assessments and guided problem-solving."
+                featured
               />
               <TimelineEntry
                 icon={Braces}
@@ -1049,7 +1054,7 @@ function ExperienceSection() {
               />
             </div>
           </div>
-          <div className="journey-column">
+          <div className="journey-column journey-column-education">
             <div className="journey-column-heading">
               <GraduationCap aria-hidden="true" />
               <h3>Education</h3>
