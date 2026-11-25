@@ -1947,3 +1947,282 @@ html {
   .project-card:hover .project-preview,
   .nav-link::after { transition: none; }
 }
+
+/* Small-screen layout safeguards */
+@media (max-width: 767px) {
+  html,
+  body,
+  #root,
+  .portfolio-shell {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .portfolio-header {
+    width: 100%;
+  }
+
+  .portfolio-header > .portfolio-container,
+  .portfolio-header-compact > .portfolio-container {
+    height: 4rem !important;
+  }
+
+  .portfolio-header .brand-name {
+    white-space: nowrap;
+  }
+
+  .mobile-navigation {
+    max-height: calc(100svh - 4.5rem);
+    overflow-y: auto;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-location {
+    line-height: 1.5;
+  }
+
+  .hero-location-divider {
+    display: none;
+  }
+
+  .hero-location span {
+    min-width: 0;
+  }
+
+  .hero-code-window {
+    max-width: calc(100vw - 3.5rem);
+  }
+
+  .visual-note {
+    max-width: 9.5rem;
+  }
+
+  .section-heading h2,
+  .about-copy .section-heading h2,
+  .contact-details-intro h3 {
+    text-wrap: balance;
+  }
+
+  .about-fact,
+  .portrait-caption,
+  .education-note,
+  .timeline-entry-top {
+    min-width: 0;
+  }
+
+  .about-fact > span:last-child,
+  .portrait-caption > span:last-child,
+  .education-note p,
+  .timeline-entry {
+    min-width: 0;
+  }
+
+  .skills-grid,
+  .projects-list,
+  .journey-grid,
+  .credentials-grid,
+  .contact-layout {
+    width: 100%;
+  }
+
+  .project-preview {
+    aspect-ratio: 1.18;
+  }
+
+  .project-title-row,
+  .project-subtitle,
+  .project-description,
+  .project-tags,
+  .project-actions {
+    max-width: 100%;
+  }
+
+  .project-subtitle {
+    margin-left: 1.6rem;
+  }
+
+  .timeline-entry-top {
+    align-items: flex-start;
+  }
+
+  .contact-detail,
+  .contact-detail > span:last-child {
+    max-width: 100%;
+  }
+
+  .contact-detail strong,
+  .contact-detail strong a {
+    word-break: break-word;
+  }
+
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .form-field-full {
+    grid-column: 1;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    width: 100%;
+  }
+
+  .footer-main,
+  .footer-right,
+  .footer-navigation,
+  .footer-socials {
+    min-width: 0;
+  }
+
+  .footer-navigation {
+    width: 100%;
+  }
+
+  .footer-navigation a {
+    min-height: 2.25rem;
+    align-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .portfolio-container {
+    width: min(100% - 1.25rem, 42rem);
+  }
+
+  .brand-lockup {
+    gap: 0.5rem;
+  }
+
+  .brand-mark {
+    width: 2.15rem;
+  }
+
+  .brand-name {
+    max-width: 8.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hero-section {
+    padding-top: 3.4rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 9ch;
+  }
+
+  .availability-pill {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-actions > * {
+    width: 100%;
+  }
+
+  .hero-social-links {
+    margin-top: 1.25rem;
+  }
+
+  .hero-location {
+    align-items: flex-start;
+  }
+
+  .hero-visual {
+    min-height: 21rem;
+  }
+
+  .visual-note-top {
+    max-width: 8.2rem;
+  }
+
+  .visual-note-bottom {
+    max-width: 8.5rem;
+  }
+
+  .section-heading h2 {
+    line-height: 1.08;
+  }
+
+  .about-portrait {
+    min-height: 18.5rem;
+  }
+
+  .portrait-monogram {
+    font-size: 5.25rem;
+  }
+
+  .skill-card,
+  .credential-card,
+  .contact-details,
+  .contact-form,
+  .timeline-entry {
+    padding: 1.1rem;
+  }
+
+  .credential-links {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .credential-links > * {
+    width: 100%;
+  }
+
+  .project-content,
+  .project-card:nth-child(even) .project-content {
+    padding: 1.1rem;
+  }
+
+  .project-title-row h3,
+  .project-card:nth-child(3) .project-title-row h3 {
+    font-size: 1.45rem;
+  }
+
+  .project-subtitle {
+    margin-left: 0;
+  }
+
+  .project-actions {
+    display: grid;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-actions > button {
+    width: 100%;
+  }
+
+  .timeline-entry-top {
+    flex-wrap: wrap;
+  }
+
+  .contact-details-intro {
+    gap: 0.65rem;
+  }
+
+  .contact-form-heading {
+    align-items: flex-start;
+  }
+
+  .footer-content {
+    padding-block: 1.5rem;
+  }
+
+  .footer-navigation {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-right {
+    flex-wrap: wrap;
+  }
+}

@@ -72,8 +72,9 @@ const navigation = [
 const githubUrl = "https://github.com/Aswini1008";
 const linkedinUrl = "https://in.linkedin.com/in/aswini-sm";
 const devUrl = "https://dev.to/aswini-sm";
-const leetcodeUrl = "https://leetcode.com/u/aswini_sm";
+const leetcodeUrl = "https://leetcode.com/u/aswini-sm/";
 const emailUrl = "mailto:smaswini006@gmail.com";
+const phoneUrl = "tel:+919940061760";
 const existingPortfolioUrl = "https://aswini-sm-portfolio.netlify.app/";
 const githubRepositoryUrl = "https://github.com/Aswini1008/sm-aswini-portfolio";
 
@@ -1201,7 +1202,9 @@ function ContactSection() {
                 </span>
                 <span>
                   <small>Phone</small>
-                  <strong>Not provided</strong>
+                  <strong>
+                    <a href={phoneUrl}>+91 99400 61760</a>
+                  </strong>
                 </span>
               </div>
               <div className="contact-detail">
